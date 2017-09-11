@@ -1,0 +1,648 @@
+time="2017-09-12T01:04:32+02:00" level=error msg="Tar: Can't stat file \\\\?\\Z:\\docker-miniconda-armv7 to tar: GetFileAttributesEx \\\\?\\Z:\\docker-miniconda-armv7\\.git\\index.lock: El sistema no puede encontrar el archivo especificado." 
+Sending build context to Docker daemon  11.23MB
+Step 1 : FROM arm32v7/debian:jessie
+jessie: Pulling from arm32v7/debian
+e925dd4ffa2a: Pulling fs layer
+e925dd4ffa2a: Verifying Checksum
+e925dd4ffa2a: Download complete
+e925dd4ffa2a: Pull complete
+Digest: sha256:deaa078057536513df6864332c87d811f8cc7c3e125cfa716b2061f78da775bf
+Status: Downloaded newer image for arm32v7/debian:jessie
+ ---> 47878e172a0c
+Step 2 : MAINTAINER Eloy Lopez <elswork@gmail.com>
+ ---> Running in f623ab111391
+ ---> ac0204e32d17
+Removing intermediate container f623ab111391
+Step 3 : ENV QEMU_EXECVE 1
+ ---> Running in 386dd5842450
+ ---> 107e06f82893
+Removing intermediate container 386dd5842450
+Step 4 : COPY qemu/resin-xbuild qemu/qemu-arm-static /usr/bin/
+ ---> a9e1c1dc56fa
+Removing intermediate container 52cc81b59f9d
+Step 5 : RUN qemu-arm-static /bin/sh -c ln -s resin-xbuild /usr/bin/cross-build-start; ln -s resin-xbuild /usr/bin/cross-build-end; mv /bin/sh /bin/sh.real; ln -s /bin/sh.real /bin/sh
+ ---> Running in 2a364258f204
+ ---> de87bac740b9
+Removing intermediate container 2a364258f204
+Step 6 : RUN cross-build-start
+ ---> Running in 5309e8b82847
+ ---> d84c72c2adc5
+Removing intermediate container 5309e8b82847
+Step 7 : RUN apt-get update --fix-missing && apt-get install -y --no-install-recommends 	wget curl nano git 	bzip2 tar unzip 	ca-certificates     libglib2.0-0 libxext6 libsm6 libxrender1
+ ---> Running in cbea3985b9ac
+Get:1 http://security.debian.org jessie/updates InRelease [63.1 kB]
+Get:2 http://security.debian.org jessie/updates/main armhf Packages [528 kB]
+Ign http://deb.debian.org jessie InRelease
+Get:3 http://deb.debian.org jessie-updates InRelease [145 kB]
+Get:4 http://deb.debian.org jessie Release.gpg [2373 B]
+Get:5 http://deb.debian.org jessie Release [148 kB]
+Get:6 http://deb.debian.org jessie-updates/main armhf Packages [23.0 kB]
+Get:7 http://deb.debian.org jessie/main armhf Packages [8864 kB]
+Fetched 9774 kB in 23s (423 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+tar is already the newest version.
+tar set to manually installed.
+The following extra packages will be installed:
+  git-man libcurl3 libcurl3-gnutls liberror-perl libexpat1 libffi6 libgdbm3
+  libgmp10 libgnutls-deb0-28 libgssapi-krb5-2 libhogweed2 libice6 libicu52
+  libidn11 libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 libldap-2.4-2
+  libnettle4 libp11-kit0 libpsl0 librtmp1 libsasl2-2 libsasl2-modules-db
+  libssh2-1 libssl1.0.0 libtasn1-6 libx11-6 libx11-data libxau6 libxcb1
+  libxdmcp6 openssl perl perl-modules x11-common
+Suggested packages:
+  bzip2-doc gettext-base git-daemon-run git-daemon-sysvinit git-doc git-el
+  git-email git-gui gitk gitweb git-arch git-cvs git-mediawiki git-svn
+  gnutls-bin krb5-doc krb5-user spell perl-doc libterm-readline-gnu-perl
+  libterm-readline-perl-perl make libb-lint-perl libcpanplus-dist-build-perl
+  libcpanplus-perl libfile-checktree-perl liblog-message-simple-perl
+  liblog-message-perl libobject-accessor-perl zip
+Recommended packages:
+  patch less rsync ssh-client libglib2.0-data shared-mime-info xdg-user-dirs
+  krb5-locales libsasl2-modules rename libarchive-extract-perl
+  libmodule-pluggable-perl libpod-latex-perl libterm-ui-perl
+  libtext-soundex-perl libcgi-pm-perl libmodule-build-perl
+  libpackage-constants-perl
+The following NEW packages will be installed:
+  bzip2 ca-certificates curl git git-man libcurl3 libcurl3-gnutls
+  liberror-perl libexpat1 libffi6 libgdbm3 libglib2.0-0 libgmp10
+  libgnutls-deb0-28 libgssapi-krb5-2 libhogweed2 libice6 libicu52 libidn11
+  libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 libldap-2.4-2 libnettle4
+  libp11-kit0 libpsl0 librtmp1 libsasl2-2 libsasl2-modules-db libsm6 libssh2-1
+  libssl1.0.0 libtasn1-6 libx11-6 libx11-data libxau6 libxcb1 libxdmcp6
+  libxext6 libxrender1 nano openssl perl perl-modules unzip wget x11-common
+0 upgraded, 48 newly installed, 0 to remove and 0 not upgraded.
+Need to get 25.1 MB of archives.
+After this operation, 90.7 MB of additional disk space will be used.
+Get:1 http://security.debian.org/ jessie/updates/main git-man all 1:2.1.4-2.1+deb8u4 [1267 kB]
+Get:2 http://security.debian.org/ jessie/updates/main git armhf 1:2.1.4-2.1+deb8u4 [2918 kB]
+Get:3 http://deb.debian.org/debian/ jessie/main libgdbm3 armhf 1.8.3-13.1 [28.5 kB]
+Get:4 http://deb.debian.org/debian/ jessie/main libssl1.0.0 armhf 1.0.1t-1+deb8u6 [868 kB]
+Get:5 http://deb.debian.org/debian/ jessie/main libgmp10 armhf 2:6.0.0+dfsg-6 [207 kB]
+Get:6 http://deb.debian.org/debian/ jessie/main libnettle4 armhf 2.7.1-5+deb8u2 [183 kB]
+Get:7 http://deb.debian.org/debian/ jessie/main libhogweed2 armhf 2.7.1-5+deb8u2 [117 kB]
+Get:8 http://deb.debian.org/debian/ jessie/main libffi6 armhf 3.1-2+deb8u1 [18.8 kB]
+Get:9 http://deb.debian.org/debian/ jessie/main libp11-kit0 armhf 0.20.7-1 [70.2 kB]
+Get:10 http://deb.debian.org/debian/ jessie/main libtasn1-6 armhf 4.2-3+deb8u3 [43.3 kB]
+Get:11 http://deb.debian.org/debian/ jessie/main libgnutls-deb0-28 armhf 3.3.8-6+deb8u7 [635 kB]
+Get:12 http://deb.debian.org/debian/ jessie/main libkeyutils1 armhf 1.5.9-5+b1 [11.1 kB]
+Get:13 http://deb.debian.org/debian/ jessie/main libkrb5support0 armhf 1.12.1+dfsg-19+deb8u2 [55.2 kB]
+Get:14 http://deb.debian.org/debian/ jessie/main libk5crypto3 armhf 1.12.1+dfsg-19+deb8u2 [111 kB]
+Get:15 http://deb.debian.org/debian/ jessie/main libkrb5-3 armhf 1.12.1+dfsg-19+deb8u2 [261 kB]
+Get:16 http://deb.debian.org/debian/ jessie/main libgssapi-krb5-2 armhf 1.12.1+dfsg-19+deb8u2 [132 kB]
+Get:17 http://deb.debian.org/debian/ jessie/main libidn11 armhf 1.29-1+deb8u2 [133 kB]
+Get:18 http://deb.debian.org/debian/ jessie/main libsasl2-modules-db armhf 2.1.26.dfsg1-13+deb8u1 [65.4 kB]
+Get:19 http://deb.debian.org/debian/ jessie/main libsasl2-2 armhf 2.1.26.dfsg1-13+deb8u1 [97.5 kB]
+Get:20 http://deb.debian.org/debian/ jessie/main libldap-2.4-2 armhf 2.4.40+dfsg-1+deb8u3 [195 kB]
+Get:21 http://deb.debian.org/debian/ jessie/main perl-modules all 5.20.2-3+deb8u8 [2547 kB]
+Get:22 http://deb.debian.org/debian/ jessie/main perl armhf 5.20.2-3+deb8u8 [2086 kB]
+Get:23 http://deb.debian.org/debian/ jessie/main librtmp1 armhf 2.4+20150115.gita107cef-1+deb8u1 [55.3 kB]
+Get:24 http://deb.debian.org/debian/ jessie/main libssh2-1 armhf 1.4.3-4.1+deb8u1 [117 kB]
+Get:25 http://deb.debian.org/debian/ jessie/main libcurl3 armhf 7.38.0-4+deb8u5 [236 kB]
+Get:26 http://deb.debian.org/debian/ jessie/main libcurl3-gnutls armhf 7.38.0-4+deb8u5 [229 kB]
+Get:27 http://deb.debian.org/debian/ jessie/main libexpat1 armhf 2.1.0-6+deb8u4 [61.8 kB]
+Get:28 http://deb.debian.org/debian/ jessie/main libglib2.0-0 armhf 2.42.1-1+b1 [2270 kB]
+Get:29 http://deb.debian.org/debian/ jessie/main x11-common all 1:7.7+7 [287 kB]
+Get:30 http://deb.debian.org/debian/ jessie/main libice6 armhf 2:1.0.9-1+b1 [52.5 kB]
+Get:31 http://deb.debian.org/debian/ jessie/main libicu52 armhf 52.1-8+deb8u5 [6582 kB]
+Get:32 http://deb.debian.org/debian/ jessie/main libsm6 armhf 2:1.2.2-1+b1 [31.8 kB]
+Get:33 http://deb.debian.org/debian/ jessie/main libxau6 armhf 1:1.0.8-1 [19.5 kB]
+Get:34 http://deb.debian.org/debian/ jessie/main libxdmcp6 armhf 1:1.1.1-1+b1 [23.4 kB]
+Get:35 http://deb.debian.org/debian/ jessie/main libxcb1 armhf 1.10-3+b1 [41.1 kB]
+Get:36 http://deb.debian.org/debian/ jessie/main libx11-data all 2:1.6.2-3 [126 kB]
+Get:37 http://deb.debian.org/debian/ jessie/main libx11-6 armhf 2:1.6.2-3 [673 kB]
+Get:38 http://deb.debian.org/debian/ jessie/main libxext6 armhf 2:1.3.3-1 [48.4 kB]
+Get:39 http://deb.debian.org/debian/ jessie/main libxrender1 armhf 1:0.9.8-1+b1 [28.8 kB]
+Get:40 http://deb.debian.org/debian/ jessie/main nano armhf 2.2.6-3 [353 kB]
+Get:41 http://deb.debian.org/debian/ jessie/main libpsl0 armhf 0.5.1-1 [40.5 kB]
+Get:42 http://deb.debian.org/debian/ jessie/main wget armhf 1.16-1+deb8u2 [477 kB]
+Get:43 http://deb.debian.org/debian/ jessie/main bzip2 armhf 1.0.6-7+b3 [45.3 kB]
+Get:44 http://deb.debian.org/debian/ jessie/main openssl armhf 1.0.1t-1+deb8u6 [659 kB]
+Get:45 http://deb.debian.org/debian/ jessie/main ca-certificates all 20141019+deb8u3 [207 kB]
+Get:46 http://deb.debian.org/debian/ jessie/main curl armhf 7.38.0-4+deb8u5 [196 kB]
+Get:47 http://deb.debian.org/debian/ jessie/main liberror-perl all 0.17-1.1 [22.4 kB]
+Get:48 http://deb.debian.org/debian/ jessie/main unzip armhf 6.0-16+deb8u3 [139 kB]
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mFetched 25.1 MB in 9s (2519 kB/s)
+Selecting previously unselected package libgdbm3:armhf.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 7562 files and directories currently installed.)
+Preparing to unpack .../libgdbm3_1.8.3-13.1_armhf.deb ...
+Unpacking libgdbm3:armhf (1.8.3-13.1) ...
+Selecting previously unselected package libssl1.0.0:armhf.
+Preparing to unpack .../libssl1.0.0_1.0.1t-1+deb8u6_armhf.deb ...
+Unpacking libssl1.0.0:armhf (1.0.1t-1+deb8u6) ...
+Selecting previously unselected package libgmp10:armhf.
+Preparing to unpack .../libgmp10_2%3a6.0.0+dfsg-6_armhf.deb ...
+Unpacking libgmp10:armhf (2:6.0.0+dfsg-6) ...
+Selecting previously unselected package libnettle4:armhf.
+Preparing to unpack .../libnettle4_2.7.1-5+deb8u2_armhf.deb ...
+Unpacking libnettle4:armhf (2.7.1-5+deb8u2) ...
+Selecting previously unselected package libhogweed2:armhf.
+Preparing to unpack .../libhogweed2_2.7.1-5+deb8u2_armhf.deb ...
+Unpacking libhogweed2:armhf (2.7.1-5+deb8u2) ...
+Selecting previously unselected package libffi6:armhf.
+Preparing to unpack .../libffi6_3.1-2+deb8u1_armhf.deb ...
+Unpacking libffi6:armhf (3.1-2+deb8u1) ...
+Selecting previously unselected package libp11-kit0:armhf.
+Preparing to unpack .../libp11-kit0_0.20.7-1_armhf.deb ...
+Unpacking libp11-kit0:armhf (0.20.7-1) ...
+Selecting previously unselected package libtasn1-6:armhf.
+Preparing to unpack .../libtasn1-6_4.2-3+deb8u3_armhf.deb ...
+Unpacking libtasn1-6:armhf (4.2-3+deb8u3) ...
+Selecting previously unselected package libgnutls-deb0-28:armhf.
+Preparing to unpack .../libgnutls-deb0-28_3.3.8-6+deb8u7_armhf.deb ...
+Unpacking libgnutls-deb0-28:armhf (3.3.8-6+deb8u7) ...
+Selecting previously unselected package libkeyutils1:armhf.
+Preparing to unpack .../libkeyutils1_1.5.9-5+b1_armhf.deb ...
+Unpacking libkeyutils1:armhf (1.5.9-5+b1) ...
+Selecting previously unselected package libkrb5support0:armhf.
+Preparing to unpack .../libkrb5support0_1.12.1+dfsg-19+deb8u2_armhf.deb ...
+Unpacking libkrb5support0:armhf (1.12.1+dfsg-19+deb8u2) ...
+Selecting previously unselected package libk5crypto3:armhf.
+Preparing to unpack .../libk5crypto3_1.12.1+dfsg-19+deb8u2_armhf.deb ...
+Unpacking libk5crypto3:armhf (1.12.1+dfsg-19+deb8u2) ...
+Selecting previously unselected package libkrb5-3:armhf.
+Preparing to unpack .../libkrb5-3_1.12.1+dfsg-19+deb8u2_armhf.deb ...
+Unpacking libkrb5-3:armhf (1.12.1+dfsg-19+deb8u2) ...
+Selecting previously unselected package libgssapi-krb5-2:armhf.
+Preparing to unpack .../libgssapi-krb5-2_1.12.1+dfsg-19+deb8u2_armhf.deb ...
+Unpacking libgssapi-krb5-2:armhf (1.12.1+dfsg-19+deb8u2) ...
+Selecting previously unselected package libidn11:armhf.
+Preparing to unpack .../libidn11_1.29-1+deb8u2_armhf.deb ...
+Unpacking libidn11:armhf (1.29-1+deb8u2) ...
+Selecting previously unselected package libsasl2-modules-db:armhf.
+Preparing to unpack .../libsasl2-modules-db_2.1.26.dfsg1-13+deb8u1_armhf.deb ...
+Unpacking libsasl2-modules-db:armhf (2.1.26.dfsg1-13+deb8u1) ...
+Selecting previously unselected package libsasl2-2:armhf.
+Preparing to unpack .../libsasl2-2_2.1.26.dfsg1-13+deb8u1_armhf.deb ...
+Unpacking libsasl2-2:armhf (2.1.26.dfsg1-13+deb8u1) ...
+Selecting previously unselected package libldap-2.4-2:armhf.
+Preparing to unpack .../libldap-2.4-2_2.4.40+dfsg-1+deb8u3_armhf.deb ...
+Unpacking libldap-2.4-2:armhf (2.4.40+dfsg-1+deb8u3) ...
+Selecting previously unselected package perl-modules.
+Preparing to unpack .../perl-modules_5.20.2-3+deb8u8_all.deb ...
+Unpacking perl-modules (5.20.2-3+deb8u8) ...
+Selecting previously unselected package perl.
+Preparing to unpack .../perl_5.20.2-3+deb8u8_armhf.deb ...
+Unpacking perl (5.20.2-3+deb8u8) ...
+Selecting previously unselected package librtmp1:armhf.
+Preparing to unpack .../librtmp1_2.4+20150115.gita107cef-1+deb8u1_armhf.deb ...
+Unpacking librtmp1:armhf (2.4+20150115.gita107cef-1+deb8u1) ...
+Selecting previously unselected package libssh2-1:armhf.
+Preparing to unpack .../libssh2-1_1.4.3-4.1+deb8u1_armhf.deb ...
+Unpacking libssh2-1:armhf (1.4.3-4.1+deb8u1) ...
+Selecting previously unselected package libcurl3:armhf.
+Preparing to unpack .../libcurl3_7.38.0-4+deb8u5_armhf.deb ...
+Unpacking libcurl3:armhf (7.38.0-4+deb8u5) ...
+Selecting previously unselected package libcurl3-gnutls:armhf.
+Preparing to unpack .../libcurl3-gnutls_7.38.0-4+deb8u5_armhf.deb ...
+Unpacking libcurl3-gnutls:armhf (7.38.0-4+deb8u5) ...
+Selecting previously unselected package libexpat1:armhf.
+Preparing to unpack .../libexpat1_2.1.0-6+deb8u4_armhf.deb ...
+Unpacking libexpat1:armhf (2.1.0-6+deb8u4) ...
+Selecting previously unselected package libglib2.0-0:armhf.
+Preparing to unpack .../libglib2.0-0_2.42.1-1+b1_armhf.deb ...
+Unpacking libglib2.0-0:armhf (2.42.1-1+b1) ...
+Selecting previously unselected package x11-common.
+Preparing to unpack .../x11-common_1%3a7.7+7_all.deb ...
+Unpacking x11-common (1:7.7+7) ...
+Selecting previously unselected package libice6:armhf.
+Preparing to unpack .../libice6_2%3a1.0.9-1+b1_armhf.deb ...
+Unpacking libice6:armhf (2:1.0.9-1+b1) ...
+Selecting previously unselected package libicu52:armhf.
+Preparing to unpack .../libicu52_52.1-8+deb8u5_armhf.deb ...
+Unpacking libicu52:armhf (52.1-8+deb8u5) ...
+Selecting previously unselected package libsm6:armhf.
+Preparing to unpack .../libsm6_2%3a1.2.2-1+b1_armhf.deb ...
+Unpacking libsm6:armhf (2:1.2.2-1+b1) ...
+Selecting previously unselected package libxau6:armhf.
+Preparing to unpack .../libxau6_1%3a1.0.8-1_armhf.deb ...
+Unpacking libxau6:armhf (1:1.0.8-1) ...
+Selecting previously unselected package libxdmcp6:armhf.
+Preparing to unpack .../libxdmcp6_1%3a1.1.1-1+b1_armhf.deb ...
+Unpacking libxdmcp6:armhf (1:1.1.1-1+b1) ...
+Selecting previously unselected package libxcb1:armhf.
+Preparing to unpack .../libxcb1_1.10-3+b1_armhf.deb ...
+Unpacking libxcb1:armhf (1.10-3+b1) ...
+Selecting previously unselected package libx11-data.
+Preparing to unpack .../libx11-data_2%3a1.6.2-3_all.deb ...
+Unpacking libx11-data (2:1.6.2-3) ...
+Selecting previously unselected package libx11-6:armhf.
+Preparing to unpack .../libx11-6_2%3a1.6.2-3_armhf.deb ...
+Unpacking libx11-6:armhf (2:1.6.2-3) ...
+Selecting previously unselected package libxext6:armhf.
+Preparing to unpack .../libxext6_2%3a1.3.3-1_armhf.deb ...
+Unpacking libxext6:armhf (2:1.3.3-1) ...
+Selecting previously unselected package libxrender1:armhf.
+Preparing to unpack .../libxrender1_1%3a0.9.8-1+b1_armhf.deb ...
+Unpacking libxrender1:armhf (1:0.9.8-1+b1) ...
+Selecting previously unselected package nano.
+Preparing to unpack .../nano_2.2.6-3_armhf.deb ...
+Unpacking nano (2.2.6-3) ...
+Selecting previously unselected package libpsl0:armhf.
+Preparing to unpack .../libpsl0_0.5.1-1_armhf.deb ...
+Unpacking libpsl0:armhf (0.5.1-1) ...
+Selecting previously unselected package wget.
+Preparing to unpack .../wget_1.16-1+deb8u2_armhf.deb ...
+Unpacking wget (1.16-1+deb8u2) ...
+Selecting previously unselected package bzip2.
+Preparing to unpack .../bzip2_1.0.6-7+b3_armhf.deb ...
+Unpacking bzip2 (1.0.6-7+b3) ...
+Selecting previously unselected package openssl.
+Preparing to unpack .../openssl_1.0.1t-1+deb8u6_armhf.deb ...
+Unpacking openssl (1.0.1t-1+deb8u6) ...
+Selecting previously unselected package ca-certificates.
+Preparing to unpack .../ca-certificates_20141019+deb8u3_all.deb ...
+Unpacking ca-certificates (20141019+deb8u3) ...
+Selecting previously unselected package curl.
+Preparing to unpack .../curl_7.38.0-4+deb8u5_armhf.deb ...
+Unpacking curl (7.38.0-4+deb8u5) ...
+Selecting previously unselected package liberror-perl.
+Preparing to unpack .../liberror-perl_0.17-1.1_all.deb ...
+Unpacking liberror-perl (0.17-1.1) ...
+Selecting previously unselected package git-man.
+Preparing to unpack .../git-man_1%3a2.1.4-2.1+deb8u4_all.deb ...
+Unpacking git-man (1:2.1.4-2.1+deb8u4) ...
+Selecting previously unselected package git.
+Preparing to unpack .../git_1%3a2.1.4-2.1+deb8u4_armhf.deb ...
+Unpacking git (1:2.1.4-2.1+deb8u4) ...
+Selecting previously unselected package unzip.
+Preparing to unpack .../unzip_6.0-16+deb8u3_armhf.deb ...
+Unpacking unzip (6.0-16+deb8u3) ...
+Processing triggers for systemd (215-17+deb8u7) ...
+Setting up libgdbm3:armhf (1.8.3-13.1) ...
+Setting up libssl1.0.0:armhf (1.0.1t-1+deb8u6) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+Setting up libgmp10:armhf (2:6.0.0+dfsg-6) ...
+Setting up libnettle4:armhf (2.7.1-5+deb8u2) ...
+Setting up libhogweed2:armhf (2.7.1-5+deb8u2) ...
+Setting up libffi6:armhf (3.1-2+deb8u1) ...
+Setting up libp11-kit0:armhf (0.20.7-1) ...
+Setting up libtasn1-6:armhf (4.2-3+deb8u3) ...
+Setting up libgnutls-deb0-28:armhf (3.3.8-6+deb8u7) ...
+Setting up libkeyutils1:armhf (1.5.9-5+b1) ...
+Setting up libkrb5support0:armhf (1.12.1+dfsg-19+deb8u2) ...
+Setting up libk5crypto3:armhf (1.12.1+dfsg-19+deb8u2) ...
+Setting up libkrb5-3:armhf (1.12.1+dfsg-19+deb8u2) ...
+Setting up libgssapi-krb5-2:armhf (1.12.1+dfsg-19+deb8u2) ...
+Setting up libidn11:armhf (1.29-1+deb8u2) ...
+Setting up libsasl2-modules-db:armhf (2.1.26.dfsg1-13+deb8u1) ...
+Setting up libsasl2-2:armhf (2.1.26.dfsg1-13+deb8u1) ...
+Setting up libldap-2.4-2:armhf (2.4.40+dfsg-1+deb8u3) ...
+Setting up perl-modules (5.20.2-3+deb8u8) ...
+Setting up perl (5.20.2-3+deb8u8) ...
+update-alternatives: using /usr/bin/prename to provide /usr/bin/rename (rename) in auto mode
+Setting up librtmp1:armhf (2.4+20150115.gita107cef-1+deb8u1) ...
+Setting up libssh2-1:armhf (1.4.3-4.1+deb8u1) ...
+Setting up libcurl3:armhf (7.38.0-4+deb8u5) ...
+Setting up libcurl3-gnutls:armhf (7.38.0-4+deb8u5) ...
+Setting up libexpat1:armhf (2.1.0-6+deb8u4) ...
+Setting up libglib2.0-0:armhf (2.42.1-1+b1) ...
+No schema files found: doing nothing.
+Setting up x11-common (1:7.7+7) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+invoke-rc.d: policy-rc.d denied execution of start.
+Setting up libice6:armhf (2:1.0.9-1+b1) ...
+Setting up libicu52:armhf (52.1-8+deb8u5) ...
+Setting up libsm6:armhf (2:1.2.2-1+b1) ...
+Setting up libxau6:armhf (1:1.0.8-1) ...
+Setting up libxdmcp6:armhf (1:1.1.1-1+b1) ...
+Setting up libxcb1:armhf (1.10-3+b1) ...
+Setting up libx11-data (2:1.6.2-3) ...
+Setting up libx11-6:armhf (2:1.6.2-3) ...
+Setting up libxext6:armhf (2:1.3.3-1) ...
+Setting up libxrender1:armhf (1:0.9.8-1+b1) ...
+Setting up nano (2.2.6-3) ...
+update-alternatives: using /bin/nano to provide /usr/bin/editor (editor) in auto mode
+update-alternatives: using /bin/nano to provide /usr/bin/pico (pico) in auto mode
+Setting up libpsl0:armhf (0.5.1-1) ...
+Setting up wget (1.16-1+deb8u2) ...
+Setting up bzip2 (1.0.6-7+b3) ...
+Setting up openssl (1.0.1t-1+deb8u6) ...
+Setting up ca-certificates (20141019+deb8u3) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+Updating certificates in /etc/ssl/certs... 174 added, 0 removed; done.
+Setting up curl (7.38.0-4+deb8u5) ...
+Setting up liberror-perl (0.17-1.1) ...
+Setting up git-man (1:2.1.4-2.1+deb8u4) ...
+Setting up git (1:2.1.4-2.1+deb8u4) ...
+Setting up unzip (6.0-16+deb8u3) ...
+Processing triggers for libc-bin (2.19-18+deb8u10) ...
+Processing triggers for systemd (215-17+deb8u7) ...
+Processing triggers for ca-certificates (20141019+deb8u3) ...
+Updating certificates in /etc/ssl/certs... 0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d....done.
+ ---> e4a3b0b50517
+Removing intermediate container cbea3985b9ac
+Step 8 : RUN apt-get install -y --no-install-recommends build-essential 	make patch cmake 	gcc 	g++     && rm -rf /var/lib/apt/lists/*
+ ---> Running in d6b8d0d01b50
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+  binutils cmake-data cpp cpp-4.9 dpkg-dev g++-4.9 gcc-4.9 libarchive13
+  libasan1 libatomic1 libc-dev-bin libc6-dev libcloog-isl4 libdpkg-perl
+  libgcc-4.9-dev libgomp1 libisl10 liblzo2-2 libmpc3 libmpfr4
+  libstdc++-4.9-dev libtimedate-perl libubsan0 libxml2 linux-libc-dev xz-utils
+Suggested packages:
+  binutils-doc codeblocks eclipse ninja-build cpp-doc gcc-4.9-locales
+  debian-keyring gcc-4.9-doc libstdc++6-4.9-dbg gcc-multilib manpages-dev
+  autoconf automake libtool flex bison gdb gcc-doc libgcc1-dbg libgomp1-dbg
+  libitm1-dbg libatomic1-dbg libasan1-dbg liblsan0-dbg libtsan0-dbg
+  libubsan0-dbg libcilkrts5-dbg libquadmath-dbg lrzip glibc-doc
+  libstdc++-4.9-doc make-doc ed diffutils-doc
+Recommended packages:
+  fakeroot libalgorithm-merge-perl libfile-fcntllock-perl xml-core
+The following NEW packages will be installed:
+  binutils build-essential cmake cmake-data cpp cpp-4.9 dpkg-dev g++ g++-4.9
+  gcc gcc-4.9 libarchive13 libasan1 libatomic1 libc-dev-bin libc6-dev
+  libcloog-isl4 libdpkg-perl libgcc-4.9-dev libgomp1 libisl10 liblzo2-2
+  libmpc3 libmpfr4 libstdc++-4.9-dev libtimedate-perl libubsan0 libxml2
+  linux-libc-dev make patch xz-utils
+0 upgraded, 32 newly installed, 0 to remove and 0 not upgraded.
+Need to get 37.1 MB of archives.
+After this operation, 109 MB of additional disk space will be used.
+Get:1 http://security.debian.org/ jessie/updates/main libxml2 armhf 2.9.1+dfsg1-5+deb8u5 [718 kB]
+Get:2 http://security.debian.org/ jessie/updates/main linux-libc-dev armhf 3.16.43-2+deb8u3 [1041 kB]
+Get:3 http://deb.debian.org/debian/ jessie/main cmake-data all 3.0.2-1+deb8u1 [929 kB]
+Get:4 http://deb.debian.org/debian/ jessie/main liblzo2-2 armhf 2.08-1.2 [49.5 kB]
+Get:5 http://deb.debian.org/debian/ jessie/main libarchive13 armhf 3.1.2-11+deb8u3 [239 kB]
+Get:6 http://deb.debian.org/debian/ jessie/main cmake armhf 3.0.2-1+deb8u1 [2075 kB]
+Get:7 http://deb.debian.org/debian/ jessie/main libasan1 armhf 4.9.2-10 [168 kB]
+Get:8 http://deb.debian.org/debian/ jessie/main libatomic1 armhf 4.9.2-10 [6062 B]
+Get:9 http://deb.debian.org/debian/ jessie/main libisl10 armhf 0.12.2-2 [338 kB]
+Get:10 http://deb.debian.org/debian/ jessie/main libcloog-isl4 armhf 0.18.2-1+b2 [50.8 kB]
+Get:11 http://deb.debian.org/debian/ jessie/main libgomp1 armhf 4.9.2-10 [35.7 kB]
+Get:12 http://deb.debian.org/debian/ jessie/main libmpfr4 armhf 3.1.2-2 [508 kB]
+Get:13 http://deb.debian.org/debian/ jessie/main libubsan0 armhf 4.9.2-10 [69.6 kB]
+Get:14 http://deb.debian.org/debian/ jessie/main libmpc3 armhf 1.0.2-1 [31.4 kB]
+Get:15 http://deb.debian.org/debian/ jessie/main patch armhf 2.7.5-1 [101 kB]
+Get:16 http://deb.debian.org/debian/ jessie/main xz-utils armhf 5.1.1alpha+20120614-2+b3 [218 kB]
+Get:17 http://deb.debian.org/debian/ jessie/main binutils armhf 2.25-5+deb8u1 [3537 kB]
+Get:18 http://deb.debian.org/debian/ jessie/main libc-dev-bin armhf 2.19-18+deb8u10 [232 kB]
+Get:19 http://deb.debian.org/debian/ jessie/main libc6-dev armhf 2.19-18+deb8u10 [1750 kB]
+Get:20 http://deb.debian.org/debian/ jessie/main cpp-4.9 armhf 4.9.2-10 [4220 kB]
+Get:21 http://deb.debian.org/debian/ jessie/main cpp armhf 4:4.9.2-2 [17.4 kB]
+Get:22 http://deb.debian.org/debian/ jessie/main libgcc-4.9-dev armhf 4.9.2-10 [358 kB]
+Get:23 http://deb.debian.org/debian/ jessie/main gcc-4.9 armhf 4.9.2-10 [4450 kB]
+Get:24 http://deb.debian.org/debian/ jessie/main gcc armhf 4:4.9.2-2 [5138 B]
+Get:25 http://deb.debian.org/debian/ jessie/main libstdc++-4.9-dev armhf 4.9.2-10 [1135 kB]
+Get:26 http://deb.debian.org/debian/ jessie/main g++-4.9 armhf 4.9.2-10 [11.8 MB]
+Get:27 http://deb.debian.org/debian/ jessie/main g++ armhf 4:4.9.2-2 [1510 B]
+Get:28 http://deb.debian.org/debian/ jessie/main make armhf 4.0-8.1 [335 kB]
+Get:29 http://deb.debian.org/debian/ jessie/main libtimedate-perl all 2.3000-2 [42.2 kB]
+Get:30 http://deb.debian.org/debian/ jessie/main libdpkg-perl all 1.17.27 [1075 kB]
+Get:31 http://deb.debian.org/debian/ jessie/main dpkg-dev all 1.17.27 [1548 kB]
+Get:32 http://deb.debian.org/debian/ jessie/main build-essential armhf 11.7 [6934 B]
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mFetched 37.1 MB in 8s (4191 kB/s)
+Selecting previously unselected package libxml2:armhf.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 10631 files and directories currently installed.)
+Preparing to unpack .../libxml2_2.9.1+dfsg1-5+deb8u5_armhf.deb ...
+Unpacking libxml2:armhf (2.9.1+dfsg1-5+deb8u5) ...
+Selecting previously unselected package cmake-data.
+Preparing to unpack .../cmake-data_3.0.2-1+deb8u1_all.deb ...
+Unpacking cmake-data (3.0.2-1+deb8u1) ...
+Selecting previously unselected package liblzo2-2:armhf.
+Preparing to unpack .../liblzo2-2_2.08-1.2_armhf.deb ...
+Unpacking liblzo2-2:armhf (2.08-1.2) ...
+Selecting previously unselected package libarchive13:armhf.
+Preparing to unpack .../libarchive13_3.1.2-11+deb8u3_armhf.deb ...
+Unpacking libarchive13:armhf (3.1.2-11+deb8u3) ...
+Selecting previously unselected package cmake.
+Preparing to unpack .../cmake_3.0.2-1+deb8u1_armhf.deb ...
+Unpacking cmake (3.0.2-1+deb8u1) ...
+Selecting previously unselected package libasan1:armhf.
+Preparing to unpack .../libasan1_4.9.2-10_armhf.deb ...
+Unpacking libasan1:armhf (4.9.2-10) ...
+Selecting previously unselected package libatomic1:armhf.
+Preparing to unpack .../libatomic1_4.9.2-10_armhf.deb ...
+Unpacking libatomic1:armhf (4.9.2-10) ...
+Selecting previously unselected package libisl10:armhf.
+Preparing to unpack .../libisl10_0.12.2-2_armhf.deb ...
+Unpacking libisl10:armhf (0.12.2-2) ...
+Selecting previously unselected package libcloog-isl4:armhf.
+Preparing to unpack .../libcloog-isl4_0.18.2-1+b2_armhf.deb ...
+Unpacking libcloog-isl4:armhf (0.18.2-1+b2) ...
+Selecting previously unselected package libgomp1:armhf.
+Preparing to unpack .../libgomp1_4.9.2-10_armhf.deb ...
+Unpacking libgomp1:armhf (4.9.2-10) ...
+Selecting previously unselected package libmpfr4:armhf.
+Preparing to unpack .../libmpfr4_3.1.2-2_armhf.deb ...
+Unpacking libmpfr4:armhf (3.1.2-2) ...
+Selecting previously unselected package libubsan0:armhf.
+Preparing to unpack .../libubsan0_4.9.2-10_armhf.deb ...
+Unpacking libubsan0:armhf (4.9.2-10) ...
+Selecting previously unselected package libmpc3:armhf.
+Preparing to unpack .../libmpc3_1.0.2-1_armhf.deb ...
+Unpacking libmpc3:armhf (1.0.2-1) ...
+Selecting previously unselected package patch.
+Preparing to unpack .../patch_2.7.5-1_armhf.deb ...
+Unpacking patch (2.7.5-1) ...
+Selecting previously unselected package xz-utils.
+Preparing to unpack .../xz-utils_5.1.1alpha+20120614-2+b3_armhf.deb ...
+Unpacking xz-utils (5.1.1alpha+20120614-2+b3) ...
+Selecting previously unselected package binutils.
+Preparing to unpack .../binutils_2.25-5+deb8u1_armhf.deb ...
+Unpacking binutils (2.25-5+deb8u1) ...
+Selecting previously unselected package libc-dev-bin.
+Preparing to unpack .../libc-dev-bin_2.19-18+deb8u10_armhf.deb ...
+Unpacking libc-dev-bin (2.19-18+deb8u10) ...
+Selecting previously unselected package linux-libc-dev:armhf.
+Preparing to unpack .../linux-libc-dev_3.16.43-2+deb8u3_armhf.deb ...
+Unpacking linux-libc-dev:armhf (3.16.43-2+deb8u3) ...
+Selecting previously unselected package libc6-dev:armhf.
+Preparing to unpack .../libc6-dev_2.19-18+deb8u10_armhf.deb ...
+Unpacking libc6-dev:armhf (2.19-18+deb8u10) ...
+Selecting previously unselected package cpp-4.9.
+Preparing to unpack .../cpp-4.9_4.9.2-10_armhf.deb ...
+Unpacking cpp-4.9 (4.9.2-10) ...
+Selecting previously unselected package cpp.
+Preparing to unpack .../cpp_4%3a4.9.2-2_armhf.deb ...
+Unpacking cpp (4:4.9.2-2) ...
+Selecting previously unselected package libgcc-4.9-dev:armhf.
+Preparing to unpack .../libgcc-4.9-dev_4.9.2-10_armhf.deb ...
+Unpacking libgcc-4.9-dev:armhf (4.9.2-10) ...
+Selecting previously unselected package gcc-4.9.
+Preparing to unpack .../gcc-4.9_4.9.2-10_armhf.deb ...
+Unpacking gcc-4.9 (4.9.2-10) ...
+Selecting previously unselected package gcc.
+Preparing to unpack .../gcc_4%3a4.9.2-2_armhf.deb ...
+Unpacking gcc (4:4.9.2-2) ...
+Selecting previously unselected package libstdc++-4.9-dev:armhf.
+Preparing to unpack .../libstdc++-4.9-dev_4.9.2-10_armhf.deb ...
+Unpacking libstdc++-4.9-dev:armhf (4.9.2-10) ...
+Selecting previously unselected package g++-4.9.
+Preparing to unpack .../g++-4.9_4.9.2-10_armhf.deb ...
+Unpacking g++-4.9 (4.9.2-10) ...
+Selecting previously unselected package g++.
+Preparing to unpack .../g++_4%3a4.9.2-2_armhf.deb ...
+Unpacking g++ (4:4.9.2-2) ...
+Selecting previously unselected package make.
+Preparing to unpack .../make_4.0-8.1_armhf.deb ...
+Unpacking make (4.0-8.1) ...
+Selecting previously unselected package libtimedate-perl.
+Preparing to unpack .../libtimedate-perl_2.3000-2_all.deb ...
+Unpacking libtimedate-perl (2.3000-2) ...
+Selecting previously unselected package libdpkg-perl.
+Preparing to unpack .../libdpkg-perl_1.17.27_all.deb ...
+Unpacking libdpkg-perl (1.17.27) ...
+Selecting previously unselected package dpkg-dev.
+Preparing to unpack .../dpkg-dev_1.17.27_all.deb ...
+Unpacking dpkg-dev (1.17.27) ...
+Selecting previously unselected package build-essential.
+Preparing to unpack .../build-essential_11.7_armhf.deb ...
+Unpacking build-essential (11.7) ...
+Setting up libxml2:armhf (2.9.1+dfsg1-5+deb8u5) ...
+Setting up cmake-data (3.0.2-1+deb8u1) ...
+Setting up liblzo2-2:armhf (2.08-1.2) ...
+Setting up libarchive13:armhf (3.1.2-11+deb8u3) ...
+Setting up cmake (3.0.2-1+deb8u1) ...
+Setting up libasan1:armhf (4.9.2-10) ...
+Setting up libatomic1:armhf (4.9.2-10) ...
+Setting up libisl10:armhf (0.12.2-2) ...
+Setting up libcloog-isl4:armhf (0.18.2-1+b2) ...
+Setting up libgomp1:armhf (4.9.2-10) ...
+Setting up libmpfr4:armhf (3.1.2-2) ...
+Setting up libubsan0:armhf (4.9.2-10) ...
+Setting up libmpc3:armhf (1.0.2-1) ...
+Setting up patch (2.7.5-1) ...
+Setting up xz-utils (5.1.1alpha+20120614-2+b3) ...
+update-alternatives: using /usr/bin/xz to provide /usr/bin/lzma (lzma) in auto mode
+Setting up binutils (2.25-5+deb8u1) ...
+Setting up libc-dev-bin (2.19-18+deb8u10) ...
+Setting up linux-libc-dev:armhf (3.16.43-2+deb8u3) ...
+Setting up libc6-dev:armhf (2.19-18+deb8u10) ...
+Setting up cpp-4.9 (4.9.2-10) ...
+Setting up cpp (4:4.9.2-2) ...
+Setting up libgcc-4.9-dev:armhf (4.9.2-10) ...
+Setting up gcc-4.9 (4.9.2-10) ...
+Setting up gcc (4:4.9.2-2) ...
+Setting up libstdc++-4.9-dev:armhf (4.9.2-10) ...
+Setting up g++-4.9 (4.9.2-10) ...
+Setting up g++ (4:4.9.2-2) ...
+update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+Setting up make (4.0-8.1) ...
+Setting up libtimedate-perl (2.3000-2) ...
+Setting up libdpkg-perl (1.17.27) ...
+Setting up dpkg-dev (1.17.27) ...
+Setting up build-essential (11.7) ...
+Processing triggers for libc-bin (2.19-18+deb8u10) ...
+ ---> 55939c3af652
+Removing intermediate container d6b8d0d01b50
+Step 9 : RUN curl -s -L https://github.com/jjhelmus/berryconda/releases/download/v1.0.0/Berryconda3-1.0.0-Linux-armv7l.sh > miniconda.sh &&     bash miniconda.sh -b -p /opt/conda &&     rm miniconda.sh &&     export PATH=/opt/conda/bin:$PATH &&     conda config --set show_channel_urls True &&     conda config --add channels rpi &&     conda config --add channels conda-forge &&     conda update conda &&     conda install python=3.6 &&    conda update --all --yes &&     conda install conda-build &&     conda install anaconda-client && 	conda clean -tipy
+ ---> Running in 3e4a59a5df63
+PREFIX=/opt/conda
+installing: python-3.5.2-1 ...
+Python 3.5.2
+installing: ca-certificates-2016.9.26-0 ...
+installing: certifi-2016.9.26-py35_0 ...
+installing: conda-4.2.13-py35_0 ...
+installing: conda-env-2.6.0-0 ...
+installing: ncurses-5.9-0 ...
+installing: openssl-1.0.2h-0 ...
+installing: pycosat-0.6.1-py35_0 ...
+installing: readline-6.3-0 ...
+installing: requests-2.12.4-py35_0 ...
+installing: ruamel_yaml-0.11.14-py35_0 ...
+installing: setuptools-32.3.1-py35_0 ...
+installing: sqlite-3.15.0-0 ...
+installing: tk-8.6.6-0 ...
+installing: xz-5.2.2-0 ...
+installing: yaml-0.1.6-0 ...
+installing: zlib-1.2.8-0 ...
+installation finished.
+Fetching package metadata .......
+Solving package specifications: ..........
+
+Package plan for installation in environment /opt/conda:
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    libffi-3.2.1               |                0          47 KB  defaults
+    asn1crypto-0.22.0          |           py35_0         149 KB  defaults
+    idna-2.6                   |           py35_0         122 KB  defaults
+    pycparser-2.18             |             py_0          85 KB  defaults
+    six-1.10.0                 |           py35_0          19 KB  defaults
+    cffi-1.10.0                |           py35_0         375 KB  defaults
+    cryptography-2.0.3         |           py35_0         805 KB  defaults
+    wheel-0.29.0               |           py35_0          87 KB  defaults
+    pip-9.0.1                  |           py35_0         1.7 MB  defaults
+    pyopenssl-16.2.0           |           py35_0          72 KB  defaults
+    conda-4.3.24               |           py35_0         515 KB  defaults
+    ------------------------------------------------------------
+                                           Total:         3.9 MB
+
+The following NEW packages will be INSTALLED:
+
+    asn1crypto:   0.22.0-py35_0 defaults
+    cffi:         1.10.0-py35_0 defaults
+    cryptography: 2.0.3-py35_0  defaults
+    idna:         2.6-py35_0    defaults
+    libffi:       3.2.1-0       defaults
+    pip:          9.0.1-py35_0  defaults
+    pycparser:    2.18-py_0     defaults
+    pyopenssl:    16.2.0-py35_0 defaults
+    six:          1.10.0-py35_0 defaults
+    wheel:        0.29.0-py35_0 defaults
+
+The following packages will be UPDATED:
+
+    conda:        4.2.13-py35_0 defaults --> 4.3.24-py35_0 defaults
+
+Proceed ([y]/n)? 
+Fetching packages ...
+libffi-3.2.1-0   0% |                              | ETA:  --:--:--   0.00  B/slibffi-3.2.1-0  33% |##########                     | ETA:  0:00:00 176.81 kB/slibffi-3.2.1-0  67% |####################           | ETA:  0:00:00 165.03 kB/slibffi-3.2.1-0 100% |###############################| ETA:  0:00:00 157.35 kB/slibffi-3.2.1-0 100% |###############################| Time: 0:00:00 152.90 kB/s
+asn1crypto-0.2   0% |                              | ETA:  --:--:--   0.00  B/sasn1crypto-0.2  10% |###                            | Time: 0:00:00 197.22 kB/sasn1crypto-0.2  21% |######                         | Time: 0:00:00 172.89 kB/sasn1crypto-0.2  32% |#########                      | Time: 0:00:00 166.06 kB/sasn1crypto-0.2  42% |#############                  | Time: 0:00:00 162.54 kB/sasn1crypto-0.2  53% |################               | Time: 0:00:00 160.45 kB/sasn1crypto-0.2  64% |###################            | Time: 0:00:00 185.71 kB/sasn1crypto-0.2  74% |#######################        | Time: 0:00:00 185.15 kB/sasn1crypto-0.2  85% |##########################     | Time: 0:00:00 180.53 kB/sasn1crypto-0.2  96% |#############################  | Time: 0:00:00 177.15 kB/sasn1crypto-0.2 100% |###############################| Time: 0:00:00 181.05 kB/sasn1crypto-0.2 100% |###############################| Time: 0:00:00 179.26 kB/s
+idna-2.6-py35_   0% |                              | ETA:  --:--:--   0.00  B/sidna-2.6-py35_  13% |####                           | Time: 0:00:00 192.93 kB/sidna-2.6-py35_  26% |########                       | Time: 0:00:00 172.71 kB/sidna-2.6-py35_  39% |############                   | Time: 0:00:00 159.23 kB/sidna-2.6-py35_  52% |################               | Time: 0:00:00 155.48 kB/sidna-2.6-py35_  65% |####################           | Time: 0:00:00 153.50 kB/sidna-2.6-py35_  78% |########################       | Time: 0:00:00 179.45 kB/sidna-2.6-py35_  91% |############################   | Time: 0:00:00 177.59 kB/sidna-2.6-py35_ 100% |###############################| Time: 0:00:00 189.50 kB/sidna-2.6-py35_ 100% |###############################| Time: 0:00:00 188.19 kB/s
+pycparser-2.18   0% |                              | ETA:  --:--:--   0.00  B/spycparser-2.18  18% |#####                          | Time: 0:00:00 177.29 kB/spycparser-2.18  37% |###########                    | Time: 0:00:00 148.00 kB/spycparser-2.18  56% |#################              | Time: 0:00:00 141.15 kB/spycparser-2.18  75% |#######################        | Time: 0:00:00 134.51 kB/spycparser-2.18  94% |#############################  | Time: 0:00:00 134.32 kB/spycparser-2.18 100% |###############################| Time: 0:00:00 139.39 kB/spycparser-2.18 100% |###############################| Time: 0:00:00 138.26 kB/s
+six-1.10.0-py3   0% |                              | ETA:  --:--:--   0.00  B/ssix-1.10.0-py3  82% |#########################      | Time: 0:00:00 230.70 kB/ssix-1.10.0-py3 100% |###############################| Time: 0:00:00 240.24 kB/ssix-1.10.0-py3 100% |###############################| Time: 0:00:00 217.85 kB/s
+cffi-1.10.0-py   0% |                              | ETA:  --:--:--   0.00  B/scffi-1.10.0-py   4% |#                              | Time: 0:00:00 192.52 kB/scffi-1.10.0-py   8% |##                             | Time: 0:00:00 166.61 kB/scffi-1.10.0-py  12% |###                            | Time: 0:00:00 159.10 kB/scffi-1.10.0-py  17% |#####                          | Time: 0:00:00 155.41 kB/scffi-1.10.0-py  21% |######                         | Time: 0:00:00 153.15 kB/scffi-1.10.0-py  25% |#######                        | Time: 0:00:00 179.04 kB/scffi-1.10.0-py  29% |#########                      | Time: 0:00:00 175.84 kB/scffi-1.10.0-py  34% |##########                     | Time: 0:00:00 172.42 kB/scffi-1.10.0-py  38% |###########                    | Time: 0:00:00 189.26 kB/scffi-1.10.0-py  42% |#############                  | Time: 0:00:00 187.38 kB/scffi-1.10.0-py  46% |##############                 | Time: 0:00:00 182.69 kB/scffi-1.10.0-py  51% |###############                | Time: 0:00:01 195.60 kB/scffi-1.10.0-py  55% |#################              | Time: 0:00:01 193.79 kB/scffi-1.10.0-py  59% |##################             | Time: 0:00:01 205.77 kB/scffi-1.10.0-py  64% |###################            | Time: 0:00:01 202.57 kB/scffi-1.10.0-py  68% |#####################          | Time: 0:00:01 212.62 kB/scffi-1.10.0-py  72% |######################         | Time: 0:00:01 209.93 kB/scffi-1.10.0-py  76% |#######################        | Time: 0:00:01 220.15 kB/scffi-1.10.0-py  81% |#########################      | Time: 0:00:01 229.91 kB/scffi-1.10.0-py  85% |##########################     | Time: 0:00:01 227.75 kB/scffi-1.10.0-py  89% |###########################    | Time: 0:00:01 236.07 kB/scffi-1.10.0-py  93% |#############################  | Time: 0:00:01 232.27 kB/scffi-1.10.0-py  98% |############################## | Time: 0:00:01 240.40 kB/scffi-1.10.0-py 100% |###############################| Time: 0:00:01 243.83 kB/scffi-1.10.0-py 100% |###############################| Time: 0:00:01 243.28 kB/s
+cryptography-2   0% |                              | ETA:  --:--:--   0.00  B/scryptography-2   1% |                               | Time: 0:00:00 178.42 kB/scryptography-2   3% |#                              | Time: 0:00:00 162.16 kB/scryptography-2   5% |#                              | Time: 0:00:00 156.64 kB/scryptography-2   7% |##                             | Time: 0:00:00 153.76 kB/scryptography-2   9% |###                            | Time: 0:00:00 152.63 kB/scryptography-2  11% |###                            | Time: 0:00:00 177.18 kB/scryptography-2  13% |####                           | Time: 0:00:00 176.43 kB/scryptography-2  15% |####                           | Time: 0:00:00 172.39 kB/scryptography-2  17% |#####                          | Time: 0:00:00 169.13 kB/scryptography-2  19% |######                         | Time: 0:00:00 184.64 kB/scryptography-2  21% |######                         | Time: 0:00:00 183.36 kB/scryptography-2  23% |#######                        | Time: 0:00:01 179.64 kB/scryptography-2  25% |########                       | Time: 0:00:01 191.35 kB/scryptography-2  27% |########                       | Time: 0:00:01 190.08 kB/scryptography-2  29% |#########                      | Time: 0:00:01 201.20 kB/scryptography-2  31% |#########                      | Time: 0:00:01 198.72 kB/scryptography-2  33% |##########                     | Time: 0:00:01 208.52 kB/scryptography-2  35% |###########                    | Time: 0:00:01 219.95 kB/scryptography-2  37% |###########                    | Time: 0:00:01 217.53 kB/scryptography-2  39% |############                   | Time: 0:00:01 225.93 kB/scryptography-2  41% |############                   | Time: 0:00:01 222.98 kB/scryptography-2  43% |#############                  | Time: 0:00:01 230.72 kB/scryptography-2  45% |##############                 | Time: 0:00:01 227.75 kB/scryptography-2  47% |##############                 | Time: 0:00:01 235.61 kB/scryptography-2  49% |###############                | Time: 0:00:01 231.91 kB/scryptography-2  51% |################               | Time: 0:00:01 238.56 kB/scryptography-2  53% |################               | Time: 0:00:01 246.67 kB/scryptography-2  55% |#################              | Time: 0:00:01 244.06 kB/scryptography-2  57% |#################              | Time: 0:00:01 250.30 kB/scryptography-2  59% |##################             | Time: 0:00:01 246.93 kB/scryptography-2  61% |###################            | Time: 0:00:02 252.72 kB/scryptography-2  63% |###################            | Time: 0:00:02 258.68 kB/scryptography-2  65% |####################           | Time: 0:00:02 257.17 kB/scryptography-2  67% |####################           | Time: 0:00:02 262.98 kB/scryptography-2  69% |#####################          | Time: 0:00:02 270.01 kB/scryptography-2  71% |######################         | Time: 0:00:02 276.74 kB/scryptography-2  73% |######################         | Time: 0:00:02 273.48 kB/scryptography-2  75% |#######################        | Time: 0:00:02 277.83 kB/scryptography-2  77% |########################       | Time: 0:00:02 283.86 kB/scryptography-2  79% |########################       | Time: 0:00:02 282.46 kB/scryptography-2  81% |#########################      | Time: 0:00:02 288.84 kB/scryptography-2  83% |#########################      | Time: 0:00:02 295.25 kB/scryptography-2  85% |##########################     | Time: 0:00:02 288.74 kB/scryptography-2  87% |###########################    | Time: 0:00:02 293.12 kB/scryptography-2  89% |###########################    | Time: 0:00:02 297.80 kB/scryptography-2  91% |############################   | Time: 0:00:02 295.46 kB/scryptography-2  93% |############################   | Time: 0:00:02 300.02 kB/scryptography-2  95% |#############################  | Time: 0:00:02 305.47 kB/scryptography-2  97% |############################## | Time: 0:00:02 310.90 kB/scryptography-2  99% |############################## | Time: 0:00:02 307.99 kB/scryptography-2 100% |###############################| Time: 0:00:02 308.57 kB/scryptography-2 100% |###############################| Time: 0:00:02 307.57 kB/s
+wheel-0.29.0-p   0% |                              | ETA:  --:--:--   0.00  B/swheel-0.29.0-p  18% |#####                          | Time: 0:00:00 186.90 kB/swheel-0.29.0-p  36% |###########                    | Time: 0:00:00 164.40 kB/swheel-0.29.0-p  55% |#################              | Time: 0:00:00 157.06 kB/swheel-0.29.0-p  73% |######################         | Time: 0:00:00 154.31 kB/swheel-0.29.0-p  92% |############################   | Time: 0:00:00 152.69 kB/swheel-0.29.0-p 100% |###############################| Time: 0:00:00 161.24 kB/swheel-0.29.0-p 100% |###############################| Time: 0:00:00 158.73 kB/s
+pip-9.0.1-py35   0% |                              | ETA:  --:--:--   0.00  B/spip-9.0.1-py35   0% |                               | Time: 0:00:00  88.28 kB/spip-9.0.1-py35   1% |                               | Time: 0:00:00  82.54 kB/spip-9.0.1-py35   2% |                               | Time: 0:00:00  98.93 kB/spip-9.0.1-py35   3% |#                              | Time: 0:00:00 107.39 kB/spip-9.0.1-py35   4% |#                              | Time: 0:00:00 114.25 kB/spip-9.0.1-py35   5% |#                              | Time: 0:00:00 119.33 kB/spip-9.0.1-py35   6% |##                             | Time: 0:00:00 123.24 kB/spip-9.0.1-py35   7% |##                             | Time: 0:00:00 135.37 kB/spip-9.0.1-py35   8% |##                             | Time: 0:00:01 142.19 kB/spip-9.0.1-py35   9% |##                             | Time: 0:00:01 153.12 kB/spip-9.0.1-py35  10% |###                            | Time: 0:00:01 157.53 kB/spip-9.0.1-py35  11% |###                            | Time: 0:00:01 166.42 kB/spip-9.0.1-py35  12% |###                            | Time: 0:00:01 170.18 kB/spip-9.0.1-py35  12% |####                           | Time: 0:00:01 178.92 kB/spip-9.0.1-py35  13% |####                           | Time: 0:00:01 180.85 kB/spip-9.0.1-py35  14% |####                           | Time: 0:00:01 187.92 kB/spip-9.0.1-py35  15% |####                           | Time: 0:00:01 190.02 kB/spip-9.0.1-py35  16% |#####                          | Time: 0:00:01 199.71 kB/spip-9.0.1-py35  17% |#####                          | Time: 0:00:01 209.49 kB/spip-9.0.1-py35  18% |#####                          | Time: 0:00:01 208.26 kB/spip-9.0.1-py35  19% |######                         | Time: 0:00:01 216.06 kB/spip-9.0.1-py35  20% |######                         | Time: 0:00:01 225.03 kB/spip-9.0.1-py35  21% |######                         | Time: 0:00:01 224.36 kB/spip-9.0.1-py35  22% |######                         | Time: 0:00:01 231.56 kB/spip-9.0.1-py35  23% |#######                        | Time: 0:00:01 238.62 kB/spip-9.0.1-py35  24% |#######                        | Time: 0:00:01 238.35 kB/spip-9.0.1-py35  24% |#######                        | Time: 0:00:01 245.06 kB/spip-9.0.1-py35  25% |########                       | Time: 0:00:01 252.74 kB/spip-9.0.1-py35  26% |########                       | Time: 0:00:01 250.77 kB/spip-9.0.1-py35  27% |########                       | Time: 0:00:01 256.87 kB/spip-9.0.1-py35  28% |########                       | Time: 0:00:01 262.67 kB/spip-9.0.1-py35  29% |#########                      | Time: 0:00:02 261.84 kB/spip-9.0.1-py35  30% |#########                      | Time: 0:00:02 267.95 kB/spip-9.0.1-py35  31% |#########                      | Time: 0:00:02 274.45 kB/spip-9.0.1-py35  32% |##########                     | Time: 0:00:02 281.72 kB/spip-9.0.1-py35  33% |##########                     | Time: 0:00:02 279.52 kB/spip-9.0.1-py35  34% |##########                     | Time: 0:00:02 284.82 kB/spip-9.0.1-py35  35% |##########                     | Time: 0:00:02 290.87 kB/spip-9.0.1-py35  36% |###########                    | Time: 0:00:02 297.56 kB/spip-9.0.1-py35  36% |###########                    | Time: 0:00:02 295.47 kB/spip-9.0.1-py35  37% |###########                    | Time: 0:00:02 300.23 kB/spip-9.0.1-py35  38% |############                   | Time: 0:00:02 305.02 kB/spip-9.0.1-py35  39% |############                   | Time: 0:00:02 311.29 kB/spip-9.0.1-py35  40% |############                   | Time: 0:00:02 310.81 kB/spip-9.0.1-py35  41% |############                   | Time: 0:00:02 315.30 kB/spip-9.0.1-py35  42% |#############                  | Time: 0:00:02 320.63 kB/spip-9.0.1-py35  43% |#############                  | Time: 0:00:02 316.47 kB/spip-9.0.1-py35  44% |#############                  | Time: 0:00:02 320.70 kB/spip-9.0.1-py35  45% |##############                 | Time: 0:00:02 325.33 kB/spip-9.0.1-py35  46% |##############                 | Time: 0:00:02 330.95 kB/spip-9.0.1-py35  47% |##############                 | Time: 0:00:02 336.28 kB/spip-9.0.1-py35  48% |##############                 | Time: 0:00:02 342.24 kB/spip-9.0.1-py35  48% |###############                | Time: 0:00:02 342.78 kB/spip-9.0.1-py35  49% |###############                | Time: 0:00:02 348.54 kB/spip-9.0.1-py35  50% |###############                | Time: 0:00:02 350.00 kB/spip-9.0.1-py35  51% |################               | Time: 0:00:02 354.34 kB/spip-9.0.1-py35  52% |################               | Time: 0:00:02 352.53 kB/spip-9.0.1-py35  53% |################               | Time: 0:00:02 356.09 kB/spip-9.0.1-py35  54% |################               | Time: 0:00:02 360.62 kB/spip-9.0.1-py35  55% |#################              | Time: 0:00:02 365.76 kB/spip-9.0.1-py35  56% |#################              | Time: 0:00:02 370.88 kB/spip-9.0.1-py35  57% |#################              | Time: 0:00:02 368.56 kB/spip-9.0.1-py35  58% |##################             | Time: 0:00:02 372.50 kB/spip-9.0.1-py35  59% |##################             | Time: 0:00:02 376.93 kB/spip-9.0.1-py35  60% |##################             | Time: 0:00:02 381.39 kB/spip-9.0.1-py35  60% |##################             | Time: 0:00:02 386.39 kB/spip-9.0.1-py35  61% |###################            | Time: 0:00:02 384.38 kB/spip-9.0.1-py35  62% |###################            | Time: 0:00:02 387.48 kB/spip-9.0.1-py35  63% |###################            | Time: 0:00:02 391.59 kB/spip-9.0.1-py35  64% |####################           | Time: 0:00:02 396.37 kB/spip-9.0.1-py35  65% |####################           | Time: 0:00:02 401.07 kB/spip-9.0.1-py35  66% |####################           | Time: 0:00:02 405.75 kB/spip-9.0.1-py35  67% |####################           | Time: 0:00:02 402.61 kB/spip-9.0.1-py35  68% |#####################          | Time: 0:00:02 405.42 kB/spip-9.0.1-py35  69% |#####################          | Time: 0:00:03 408.59 kB/spip-9.0.1-py35  70% |#####################          | Time: 0:00:03 413.07 kB/spip-9.0.1-py35  71% |######################         | Time: 0:00:03 417.54 kB/spip-9.0.1-py35  72% |######################         | Time: 0:00:03 421.92 kB/spip-9.0.1-py35  72% |######################         | Time: 0:00:03 420.64 kB/s[91mInstalling pycparser-2.18-py_0 requires a minimum conda version of 4.3.
+[0mpip-9.0.1-py35  73% |######################         | Time: 0:00:03 422.97 kB/spip-9.0.1-py35  74% |#######################        | Time: 0:00:03 427.22 kB/spip-9.0.1-py35  75% |#######################        | Time: 0:00:03 431.47 kB/spip-9.0.1-py35  76% |#######################        | Time: 0:00:03 435.69 kB/spip-9.0.1-py35  77% |########################       | Time: 0:00:03 439.40 kB/spip-9.0.1-py35  78% |########################       | Time: 0:00:03 438.52 kB/spip-9.0.1-py35  79% |########################       | Time: 0:00:03 443.17 kB/spip-9.0.1-py35  80% |########################       | Time: 0:00:03 447.71 kB/spip-9.0.1-py35  81% |#########################      | Time: 0:00:03 452.13 kB/spip-9.0.1-py35  82% |#########################      | Time: 0:00:03 454.55 kB/spip-9.0.1-py35  83% |#########################      | Time: 0:00:03 458.92 kB/spip-9.0.1-py35  84% |##########################     | Time: 0:00:03 463.33 kB/spip-9.0.1-py35  84% |##########################     | Time: 0:00:03 457.90 kB/spip-9.0.1-py35  85% |##########################     | Time: 0:00:03 460.69 kB/spip-9.0.1-py35  86% |##########################     | Time: 0:00:03 464.47 kB/spip-9.0.1-py35  87% |###########################    | Time: 0:00:03 468.27 kB/spip-9.0.1-py35  88% |###########################    | Time: 0:00:03 472.08 kB/spip-9.0.1-py35  89% |###########################    | Time: 0:00:03 476.17 kB/spip-9.0.1-py35  90% |############################   | Time: 0:00:03 480.03 kB/spip-9.0.1-py35  91% |############################   | Time: 0:00:03 477.99 kB/spip-9.0.1-py35  92% |############################   | Time: 0:00:03 481.12 kB/spip-9.0.1-py35  93% |############################   | Time: 0:00:03 484.22 kB/spip-9.0.1-py35  94% |#############################  | Time: 0:00:03 487.55 kB/spip-9.0.1-py35  95% |#############################  | Time: 0:00:03 491.84 kB/spip-9.0.1-py35  96% |#############################  | Time: 0:00:03 496.00 kB/spip-9.0.1-py35  96% |############################## | Time: 0:00:03 500.07 kB/spip-9.0.1-py35  97% |############################## | Time: 0:00:03 503.18 kB/spip-9.0.1-py35  98% |############################## | Time: 0:00:03 500.36 kB/spip-9.0.1-py35  99% |############################## | Time: 0:00:03 502.86 kB/spip-9.0.1-py35 100% |###############################| Time: 0:00:03 503.37 kB/spip-9.0.1-py35 100% |###############################| Time: 0:00:03 502.73 kB/s
+pyopenssl-16.2   0% |                              | ETA:  --:--:--   0.00  B/spyopenssl-16.2  22% |######                         | Time: 0:00:00 193.32 kB/spyopenssl-16.2  44% |#############                  | Time: 0:00:00 171.19 kB/spyopenssl-16.2  66% |####################           | Time: 0:00:00 164.66 kB/spyopenssl-16.2  89% |###########################    | Time: 0:00:00 161.31 kB/spyopenssl-16.2 100% |###############################| Time: 0:00:00 174.39 kB/spyopenssl-16.2 100% |###############################| Time: 0:00:00 170.88 kB/s
+conda-4.3.24-p   0% |                              | ETA:  --:--:--   0.00  B/sconda-4.3.24-p   3% |                               | Time: 0:00:00 185.38 kB/sconda-4.3.24-p   6% |#                              | Time: 0:00:00 166.02 kB/sconda-4.3.24-p   9% |##                             | Time: 0:00:00 160.28 kB/sconda-4.3.24-p  12% |###                            | Time: 0:00:00 157.28 kB/sconda-4.3.24-p  15% |####                           | Time: 0:00:00 155.57 kB/sconda-4.3.24-p  18% |#####                          | Time: 0:00:00 181.69 kB/sconda-4.3.24-p  21% |######                         | Time: 0:00:00 179.97 kB/sconda-4.3.24-p  24% |#######                        | Time: 0:00:00 175.77 kB/sconda-4.3.24-p  27% |########                       | Time: 0:00:00 172.19 kB/sconda-4.3.24-p  31% |#########                      | Time: 0:00:00 188.15 kB/sconda-4.3.24-p  34% |##########                     | Time: 0:00:00 186.16 kB/sconda-4.3.24-p  37% |###########                    | Time: 0:00:00 199.54 kB/sconda-4.3.24-p  40% |############                   | Time: 0:00:01 198.89 kB/sconda-4.3.24-p  43% |#############                  | Time: 0:00:01 213.22 kB/sconda-4.3.24-p  46% |##############                 | Time: 0:00:01 206.35 kB/sconda-4.3.24-p  49% |###############                | Time: 0:00:01 201.47 kB/sconda-4.3.24-p  52% |################               | Time: 0:00:01 211.55 kB/sconda-4.3.24-p  55% |#################              | Time: 0:00:01 223.08 kB/sconda-4.3.24-p  58% |##################             | Time: 0:00:01 220.70 kB/sconda-4.3.24-p  62% |###################            | Time: 0:00:01 229.26 kB/sconda-4.3.24-p  65% |####################           | Time: 0:00:01 226.16 kB/sconda-4.3.24-p  68% |#####################          | Time: 0:00:01 232.83 kB/sconda-4.3.24-p  71% |######################         | Time: 0:00:01 241.72 kB/sconda-4.3.24-p  74% |#######################        | Time: 0:00:01 240.90 kB/sconda-4.3.24-p  77% |########################       | Time: 0:00:01 248.57 kB/sconda-4.3.24-p  80% |#########################      | Time: 0:00:01 244.54 kB/sconda-4.3.24-p  83% |#########################      | Time: 0:00:01 251.24 kB/sconda-4.3.24-p  86% |##########################     | Time: 0:00:01 247.72 kB/sconda-4.3.24-p  90% |###########################    | Time: 0:00:01 254.03 kB/sconda-4.3.24-p  93% |############################   | Time: 0:00:01 260.54 kB/sconda-4.3.24-p  96% |#############################  | Time: 0:00:01 258.99 kB/sconda-4.3.24-p  99% |############################## | Time: 0:00:01 265.41 kB/sconda-4.3.24-p 100% |###############################| Time: 0:00:01 266.41 kB/sconda-4.3.24-p 100% |###############################| Time: 0:00:01 265.85 kB/s
+Extracting packages ...
+[                    ]|                                                  |   0%[libffi              ]|                                                  |   0%[asn1crypto          ]|####                                              |   9%[idna                ]|#########                                         |  18%[pycparser           ]|#############                                     |  27%[six                 ]|##################                                |  36%[cffi                ]|######################                            |  45%[cryptography        ]|###########################                       |  54%[wheel               ]|###############################                   |  63%[pip                 ]|####################################              |  72%[pyopenssl           ]|########################################          |  81%[conda               ]|#############################################     |  90%[      COMPLETE      ]|##################################################| 100%
+Unlinking packages ...
+[      COMPLETE      ]|                                                  |   0%[conda               ]|                                                  |   0%[conda               ]|                                                  |   0%[      COMPLETE      ]|##################################################| 100%
+Linking packages ...
+[      COMPLETE      ]|                                                  |   0%[libffi              ]|                                                  |   0%[libffi              ]|                                                  |   0%[asn1crypto          ]|####                                              |   9%[idna                ]|#########                                         |  18%[pycparser           ]|#############                                     |  27%[91m/bin/sh: 1: conda: not found
+[0m ---> d0dc58061e52
+Removing intermediate container 3e4a59a5df63
+Step 10 : ENV PATH /opt/conda/bin:$PATH
+ ---> Running in 73d3773239b1
+ ---> cc4ee9256368
+Removing intermediate container 73d3773239b1
+Step 11 : RUN export PATH="/opt/conda/bin:${PATH}" &&     conda install --yes jinja2 &&     conda config --set anaconda_upload yes &&     conda config --set use_pip false && conda config --set show_channel_urls true &&  conda clean -tipsy
+ ---> Running in 351d8beedf04
+[91m/bin/sh: 1: [0m[91mconda: not found
+[0m ---> a974f6e652c4
+Removing intermediate container 351d8beedf04
+Step 12 : RUN cross-build-end
+ ---> Running in 9e7542d6e5bd
+ ---> d0e7448b6fad
+Removing intermediate container 9e7542d6e5bd
+Step 13 : ENTRYPOINT /usr/bin/qemu-arm-static /usr/bin/env QEMU_EXECVE=1
+ ---> Running in c521ff244d31
+ ---> 97bc80405a83
+Removing intermediate container c521ff244d31
+Step 14 : CMD /bin/bash
+ ---> Running in 5262ad0b8762
+ ---> a648731ac44d
+Removing intermediate container 5262ad0b8762
+Successfully built a648731ac44d
+SECURITY WARNING: You are building a Docker image from Windows against a non-Windows Docker host. All files and directories added to build context will have '-rwxr-xr-x' permissions. It is recommended to double check and reset permissions for sensitive files and directories.

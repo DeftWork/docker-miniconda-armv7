@@ -1,6 +1,8 @@
-FROM armv7/armhf-ubuntu
+FROM arm32v7/debian:jessie
+#FROM armv7/armhf-ubuntu
 
-MAINTAINER Thomas Antony <tantony@smart-ag.com>
+MAINTAINER Eloy Lopez <elswork@gmail.com>
+#MAINTAINER Thomas Antony <tantony@smart-ag.com>
 
 ENV QEMU_EXECVE 1
 
